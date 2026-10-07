@@ -1,0 +1,2383 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Golden Foot | أحذية كرة القدم الأصلية</title>
+  <meta name="description" content="Golden Foot – أحذية كرة القدم الأصلية والكلاسيكية | التوصيل لجميع أنحاء المغرب" />
+  <link rel="icon" type="image/jpeg" href="/images/logo.jpg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    /* ═══════════════════════════════════════════════════
+       RESET & ROOT VARIABLES
+    ═══════════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #d4af37;
+      --gold-light: #f0d060;
+      --gold-dark: #a88520;
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark2: #1a1a1a;
+      --dark3: #222222;
+      --dark4: #2a2a2a;
+      --white: #ffffff;
+      --gray: #888888;
+      --gray-light: #cccccc;
+      --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      --radius: 14px;
+      --shadow: 0 8px 32px rgba(0,0,0,0.6);
+      --shadow-gold: 0 0 24px rgba(212,175,55,0.3);
+      --font: 'Cairo', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════════════════════
+       CUSTOM SCROLLBAR
+    ═══════════════════════════════════════════════════ */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--gold-light); }
+
+    /* ═══════════════════════════════════════════════════
+       KEYFRAME ANIMATIONS
+    ═══════════════════════════════════════════════════ */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    @keyframes pulse-gold {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(212,175,55,0.4); }
+      50%       { box-shadow: 0 0 0 10px rgba(212,175,55,0); }
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.85); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    @keyframes slideInRight {
+      from { transform: translateX(100%); opacity: 0; }
+      to   { transform: translateX(0);    opacity: 1; }
+    }
+    @keyframes slideInLeft {
+      from { transform: translateX(-100%); opacity: 0; }
+      to   { transform: translateX(0);     opacity: 1; }
+    }
+    @keyframes gradientShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       GOLD DIVIDER
+    ═══════════════════════════════════════════════════ */
+    .gold-line {
+      width: 80px; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 12px auto;
+      border-radius: 2px;
+    }
+
+    /* ═══════════════════════════════════════════════════
+       HEADER / NAV
+    ═══════════════════════════════════════════════════ */
+    #header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.75);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+      transition: var(--transition);
+    }
+    #header.scrolled {
+      background: rgba(10, 10, 10, 0.95);
+      border-bottom-color: rgba(212, 175, 55, 0.4);
+    }
+
+    .nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* Logo */
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-logo {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--gold);
+      box-shadow: var(--shadow-gold);
+      transition: transform var(--transition);
+    }
+    .nav-brand:hover .nav-logo { transform: scale(1.08) rotate(5deg); }
+    .nav-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Nav links (desktop) */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--gray-light);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      position: relative;
+      transition: color var(--transition);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 50%; right: 50%;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: left var(--transition), right var(--transition);
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { left: 0; right: 0; }
+
+    /* Nav right controls */
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    /* Language selector */
+    .lang-wrapper {
+      position: relative;
+    }
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.35);
+      color: var(--gold);
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-family: var(--font);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .lang-btn:hover {
+      background: rgba(212,175,55,0.2);
+      border-color: var(--gold);
+    }
+    .lang-btn i { font-size: 1rem; }
+    .lang-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      background: var(--dark2);
+      border: 1px solid rgba(212,175,55,0.25);
+      border-radius: var(--radius);
+      padding: 8px 0;
+      min-width: 170px;
+      box-shadow: var(--shadow);
+      z-index: 100;
+      animation: fadeIn 0.2s ease;
+    }
+    [dir="rtl"] .lang-dropdown { left: auto; right: 0; }
+    .lang-dropdown.open { display: block; }
+    .lang-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      color: var(--gray-light);
+      transition: background var(--transition), color var(--transition);
+    }
+    .lang-option:hover { background: rgba(212,175,55,0.1); color: var(--gold); }
+    .lang-option.active { color: var(--gold); font-weight: 700; }
+    .lang-flag { font-size: 1.1rem; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 8px;
+      background: transparent;
+      border: none;
+      transition: background var(--transition);
+    }
+    .hamburger:hover { background: rgba(212,175,55,0.1); }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: var(--transition);
+      transform-origin: center;
+    }
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile drawer */
+    .mobile-drawer {
+      position: fixed;
+      top: 74px; left: 0; right: 0;
+      background: rgba(10,10,10,0.97);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(212,175,55,0.2);
+      padding: 24px;
+      transform: translateY(-110%);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease;
+      z-index: 999;
+    }
+    .mobile-drawer.open {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .mobile-drawer ul { list-style: none; }
+    .mobile-drawer ul li { border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .mobile-drawer ul li a {
+      display: block;
+      padding: 16px 4px;
+      color: var(--gray-light);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: color var(--transition);
+    }
+    .mobile-drawer ul li a:hover { color: var(--gold); }
+
+    /* ═══════════════════════════════════════════════════
+       HERO SECTION
+    ═══════════════════════════════════════════════════ */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--black);
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('/images/p05.jpg');
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.05);
+      animation: slowZoom 20s ease-in-out infinite alternate;
+      filter: brightness(0.35) saturate(0.8);
+    }
+    @keyframes slowZoom {
+      from { transform: scale(1.05); }
+      to   { transform: scale(1.12); }
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,10,10,0.3) 0%,
+        rgba(10,10,10,0.1) 40%,
+        rgba(10,10,10,0.6) 80%,
+        rgba(10,10,10,1) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 24px;
+      max-width: 900px;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(212,175,55,0.15);
+      border: 1px solid rgba(212,175,55,0.4);
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 8px 24px;
+      border-radius: 30px;
+      margin-bottom: 28px;
+      animation: fadeInDown 0.8s ease both;
+    }
+    .hero-title {
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      animation: fadeInDown 0.9s 0.1s ease both;
+    }
+    .hero-title .highlight {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% auto;
+      animation: shimmer 3s linear infinite;
+    }
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: rgba(255,255,255,0.75);
+      font-weight: 400;
+      margin-bottom: 44px;
+      animation: fadeInUp 1s 0.2s ease both;
+    }
+    .hero-subtitle .sep {
+      color: var(--gold);
+      margin: 0 10px;
+    }
+    .hero-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeInUp 1s 0.35s ease both;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      color: var(--black);
+      font-family: var(--font);
+      font-size: 0.95rem;
+      font-weight: 800;
+      padding: 15px 36px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: 0 4px 20px rgba(212,175,55,0.4);
+      letter-spacing: 0.04em;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(212,175,55,0.6);
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--white);
+      font-family: var(--font);
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 50px;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+      letter-spacing: 0.04em;
+    }
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-3px);
+    }
+    .hero-stats {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 48px;
+      animation: fadeInUp 1s 0.5s ease both;
+      z-index: 2;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .scroll-indicator {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      animation: fadeIn 1.5s 1s ease both;
+      z-index: 2;
+    }
+    .scroll-indicator span {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+    .scroll-arrow {
+      width: 30px; height: 30px;
+      border-right: 2px solid var(--gold);
+      border-bottom: 2px solid var(--gold);
+      transform: rotate(45deg);
+      animation: bounceDown 1.5s ease-in-out infinite;
+      opacity: 0.7;
+    }
+    @keyframes bounceDown {
+      0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.7; }
+      50%       { transform: rotate(45deg) translateY(6px); opacity: 1; }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       SECTION COMMONS
+    ═══════════════════════════════════════════════════ */
+    .section {
+      padding: 96px 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .section-subtitle {
+      margin-top: 14px;
+      font-size: 1rem;
+      color: var(--gray);
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ═══════════════════════════════════════════════════
+       PRODUCTS GRID
+    ═══════════════════════════════════════════════════ */
+    #catalog { background: var(--dark); }
+    #catalog > .section { max-width: 1400px; }
+
+    /* Filter bar */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .filter-btn {
+      background: transparent;
+      border: 1px solid rgba(212,175,55,0.25);
+      color: var(--gray);
+      font-family: var(--font);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 9px 22px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: var(--transition);
+      letter-spacing: 0.06em;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--black);
+    }
+
+    /* Grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 28px;
+    }
+
+    /* Card */
+    .product-card {
+      background: var(--dark2);
+      border: 1px solid rgba(212,175,55,0.1);
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: cardReveal 0.6s ease forwards;
+    }
+    @keyframes cardReveal {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .product-card:nth-child(1)  { animation-delay: 0.05s; }
+    .product-card:nth-child(2)  { animation-delay: 0.10s; }
+    .product-card:nth-child(3)  { animation-delay: 0.15s; }
+    .product-card:nth-child(4)  { animation-delay: 0.20s; }
+    .product-card:nth-child(5)  { animation-delay: 0.25s; }
+    .product-card:nth-child(6)  { animation-delay: 0.30s; }
+    .product-card:nth-child(7)  { animation-delay: 0.35s; }
+    .product-card:nth-child(8)  { animation-delay: 0.40s; }
+    .product-card:nth-child(9)  { animation-delay: 0.45s; }
+    .product-card:nth-child(10) { animation-delay: 0.50s; }
+    .product-card:nth-child(11) { animation-delay: 0.55s; }
+    .product-card:nth-child(12) { animation-delay: 0.60s; }
+    .product-card:nth-child(13) { animation-delay: 0.65s; }
+    .product-card:nth-child(14) { animation-delay: 0.70s; }
+    .product-card:nth-child(15) { animation-delay: 0.75s; }
+    .product-card:nth-child(16) { animation-delay: 0.80s; }
+    .product-card:nth-child(17) { animation-delay: 0.85s; }
+    .product-card:nth-child(18) { animation-delay: 0.90s; }
+
+    .product-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6), var(--shadow-gold);
+      border-color: rgba(212,175,55,0.45);
+    }
+
+    /* Badge */
+    .card-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+      z-index: 2;
+    }
+    [dir="rtl"] .card-badge { right: auto; left: 14px; }
+    .card-badge.new { background: #2ecc71; color: #fff; }
+    .card-badge.hot { background: #e74c3c; color: #fff; }
+
+    /* Image container */
+    .card-img-wrap {
+      position: relative;
+      overflow: hidden;
+      height: 260px;
+      background: var(--dark3);
+    }
+    .card-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+      display: block;
+    }
+    .product-card:hover .card-img-wrap img { transform: scale(1.1); }
+
+    .card-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10,10,10,0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .product-card:hover .card-img-overlay { opacity: 1; }
+    .zoom-icon {
+      width: 52px; height: 52px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+      font-size: 1.2rem;
+      background: rgba(10,10,10,0.6);
+      transform: scale(0.7);
+      transition: transform var(--transition);
+    }
+    .product-card:hover .zoom-icon { transform: scale(1); }
+
+    /* Card body */
+    .card-body {
+      padding: 20px 20px 22px;
+    }
+    .card-brand {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .card-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .card-desc {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .card-price {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--gold);
+    }
+    .card-price span {
+      font-size: 0.7rem;
+      color: var(--gray);
+      font-weight: 500;
+    }
+    .btn-order {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      color: var(--black);
+      font-family: var(--font);
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 10px 20px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+    .btn-order:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212,175,55,0.5);
+    }
+
+    /* ═══════════════════════════════════════════════════
+       FEATURES STRIP
+    ═══════════════════════════════════════════════════ */
+    #features {
+      background: linear-gradient(135deg, var(--dark2), var(--dark3));
+      border-top: 1px solid rgba(212,175,55,0.1);
+      border-bottom: 1px solid rgba(212,175,55,0.1);
+      padding: 64px 24px;
+    }
+    .features-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+    }
+    .feature-item {
+      text-align: center;
+      padding: 32px 20px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(212,175,55,0.08);
+      transition: var(--transition);
+    }
+    .feature-item:hover {
+      background: rgba(212,175,55,0.05);
+      border-color: rgba(212,175,55,0.25);
+      transform: translateY(-4px);
+    }
+    .feature-icon {
+      width: 64px; height: 64px;
+      margin: 0 auto 16px;
+      background: linear-gradient(135deg, rgba(212,175,55,0.2), rgba(212,175,55,0.05));
+      border: 1px solid rgba(212,175,55,0.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      color: var(--gold);
+    }
+    .feature-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .feature-text {
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.55;
+    }
+
+    /* ═══════════════════════════════════════════════════
+       LIGHTBOX / IMAGE ZOOM MODAL
+    ═══════════════════════════════════════════════════ */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.95);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 20px;
+    }
+    #lightbox.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .lightbox-inner {
+      position: relative;
+      max-width: 90vw;
+      max-height: 88vh;
+      transform: scale(0.8);
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    #lightbox.open .lightbox-inner { transform: scale(1); }
+    .lightbox-img {
+      display: block;
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: var(--radius);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.8), var(--shadow-gold);
+      border: 1px solid rgba(212,175,55,0.25);
+    }
+    .lightbox-caption {
+      text-align: center;
+      margin-top: 16px;
+      color: var(--gray-light);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      color: var(--white);
+      font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .lightbox-close:hover { background: rgba(212,175,55,0.2); color: var(--gold); border-color: var(--gold); }
+    .lightbox-nav {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px; height: 48px;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.3);
+      border-radius: 50%;
+      color: var(--gold);
+      font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      z-index: 2;
+    }
+    .lightbox-nav:hover { background: rgba(212,175,55,0.25); }
+    .lightbox-prev { left: 16px; }
+    .lightbox-next { right: 16px; }
+
+    /* ═══════════════════════════════════════════════════
+       ORDER / WHATSAPP MODAL
+    ═══════════════════════════════════════════════════ */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 8000;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .modal-box {
+      background: var(--dark2);
+      border: 1px solid rgba(212,175,55,0.25);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.8), var(--shadow-gold);
+      transform: scale(0.85) translateY(30px);
+      transition: transform 0.4s cubic-bezier(0.34,1.4,0.64,1);
+      overflow: hidden;
+    }
+    .modal-overlay.open .modal-box { transform: scale(1) translateY(0); }
+
+    .modal-header {
+      background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.05));
+      border-bottom: 1px solid rgba(212,175,55,0.15);
+      padding: 24px 28px 20px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .modal-header-left { }
+    .modal-header-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .modal-product-name {
+      font-size: 0.85rem;
+      color: var(--gold);
+      font-weight: 700;
+    }
+    .modal-close {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50%;
+      color: var(--gray);
+      font-size: 0.9rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+    .modal-close:hover { background: rgba(212,175,55,0.15); color: var(--gold); border-color: rgba(212,175,55,0.4); }
+
+    .modal-body { padding: 28px; }
+
+    .form-group { margin-bottom: 18px; }
+    .form-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--gray-light);
+      margin-bottom: 7px;
+      letter-spacing: 0.05em;
+    }
+    .form-label i {
+      color: var(--gold);
+      margin-left: 6px;
+      margin-right: 0;
+      font-size: 0.85rem;
+    }
+    [dir="ltr"] .form-label i { margin-left: 0; margin-right: 6px; }
+
+    .form-input, .form-select {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--white);
+      font-family: var(--font);
+      font-size: 0.92rem;
+      padding: 13px 16px;
+      border-radius: 10px;
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+      appearance: none;
+    }
+    .form-input:focus, .form-select:focus {
+      border-color: var(--gold);
+      background: rgba(212,175,55,0.04);
+      box-shadow: 0 0 0 3px rgba(212,175,55,0.12);
+    }
+    .form-input::placeholder { color: rgba(255,255,255,0.25); }
+    .form-select option { background: var(--dark2); color: var(--white); }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .modal-footer {
+      padding: 0 28px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .btn-whatsapp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: #fff;
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 800;
+      padding: 16px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+      letter-spacing: 0.04em;
+    }
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(37,211,102,0.5);
+    }
+    .btn-whatsapp i { font-size: 1.2rem; }
+    .modal-note {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--gray);
+    }
+    .modal-note i { color: var(--gold); margin-left: 5px; }
+
+    /* Success state */
+    .modal-success {
+      padding: 40px 28px;
+      text-align: center;
+      display: none;
+    }
+    .modal-success.show { display: block; }
+    .success-icon {
+      width: 72px; height: 72px;
+      background: rgba(37,211,102,0.15);
+      border: 2px solid #25d366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 1.8rem;
+      color: #25d366;
+      animation: scaleIn 0.5s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .success-title { font-size: 1.2rem; font-weight: 800; color: var(--white); margin-bottom: 10px; }
+    .success-text { font-size: 0.88rem; color: var(--gray); line-height: 1.6; }
+
+    /* ═══════════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════════ */
+    #footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(212,175,55,0.15);
+      padding: 64px 24px 32px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand {}
+    .footer-logo-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .footer-logo {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      object-fit: cover;
+    }
+    .footer-brand-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .footer-desc {
+      font-size: 0.83rem;
+      color: var(--gray);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .footer-social {
+      display: flex;
+      gap: 10px;
+    }
+    .social-btn {
+      width: 38px; height: 38px;
+      background: rgba(212,175,55,0.08);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .social-btn:hover {
+      background: var(--gold);
+      color: var(--black);
+      transform: translateY(-3px);
+    }
+    .footer-col-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .footer-contact-item i {
+      color: var(--gold);
+      font-size: 0.9rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .footer-contact-item span {
+      font-size: 0.83rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+    .footer-divider {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 24px;
+    }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+    }
+    .footer-copy span { color: var(--gold); }
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-bottom-links a {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .footer-bottom-links a:hover { color: var(--gold); }
+
+    /* ═══════════════════════════════════════════════════
+       BACK TO TOP
+    ═══════════════════════════════════════════════════ */
+    #back-top {
+      position: fixed;
+      bottom: 28px;
+      left: 28px;
+      width: 46px; height: 46px;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      color: var(--black);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 500;
+      box-shadow: 0 4px 16px rgba(212,175,55,0.4);
+    }
+    [dir="ltr"] #back-top { left: auto; right: 28px; }
+    #back-top.visible { opacity: 1; pointer-events: all; }
+    #back-top:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(212,175,55,0.5); }
+
+    /* ═══════════════════════════════════════════════════
+       TOAST NOTIFICATION
+    ═══════════════════════════════════════════════════ */
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: var(--dark2);
+      border: 1px solid rgba(212,175,55,0.3);
+      border-radius: 12px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.85rem;
+      color: var(--white);
+      box-shadow: var(--shadow);
+      z-index: 9999;
+      transform: translateY(80px);
+      opacity: 0;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      max-width: 320px;
+    }
+    [dir="rtl"] .toast { right: auto; left: 28px; }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast i { color: var(--gold); font-size: 1.1rem; }
+
+    /* ═══════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════ */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 700px) {
+      .hero-stats { gap: 28px; }
+      .stat-num { font-size: 1.4rem; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .form-grid { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+    }
+    @media (max-width: 480px) {
+      .nav-inner { padding: 0 16px; }
+      .hero-stats { flex-wrap: wrap; justify-content: center; }
+      .section { padding: 64px 16px; }
+      .products-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .card-img-wrap { height: 180px; }
+      .card-body { padding: 14px 14px 16px; }
+      .card-name { font-size: 0.88rem; }
+      .card-desc { display: none; }
+    }
+
+    /* ═══════════════════════════════════════════════════
+       LTR OVERRIDES
+    ═══════════════════════════════════════════════════ */
+    [dir="ltr"] { font-family: var(--font); }
+    [dir="ltr"] .nav-inner { flex-direction: row; }
+    [dir="ltr"] .nav-brand { flex-direction: row; }
+  </style>
+</head>
+
+<body>
+
+<!-- ════════════════════════════════════════
+     HEADER
+════════════════════════════════════════ -->
+<header id="header">
+  <div class="nav-inner">
+    <!-- Brand -->
+    <a href="#" class="nav-brand">
+      <img src="/images/logo.jpg" alt="Golden Foot Logo" class="nav-logo" />
+      <span class="nav-title" data-i18n="brand">GOLDEN FOOT</span>
+    </a>
+
+    <!-- Desktop Links -->
+    <ul class="nav-links">
+      <li><a href="#hero"    data-i18n="nav_home">الرئيسية</a></li>
+      <li><a href="#catalog" data-i18n="nav_catalog">المنتجات</a></li>
+      <li><a href="#features" data-i18n="nav_features">مميزاتنا</a></li>
+      <li><a href="#footer"  data-i18n="nav_contact">اتصل بنا</a></li>
+    </ul>
+
+    <!-- Controls -->
+    <div class="nav-controls">
+      <!-- Language selector -->
+      <div class="lang-wrapper">
+        <button class="lang-btn" id="langBtn" aria-haspopup="listbox">
+          <i class="fa-solid fa-globe"></i>
+          <span id="langLabel">AR</span>
+          <i class="fa-solid fa-chevron-down" style="font-size:0.65rem"></i>
+        </button>
+        <div class="lang-dropdown" id="langDropdown" role="listbox">
+          <div class="lang-option active" data-lang="ar"   role="option"><span class="lang-flag">🇲🇦</span> العربية</div>
+          <div class="lang-option"        data-lang="fr"   role="option"><span class="lang-flag">🇫🇷</span> Français</div>
+          <div class="lang-option"        data-lang="en"   role="option"><span class="lang-flag">🇬🇧</span> English</div>
+          <div class="lang-option"        data-lang="es"   role="option"><span class="lang-flag">🇪🇸</span> Español</div>
+          <div class="lang-option"        data-lang="de"   role="option"><span class="lang-flag">🇩🇪</span> Deutsch</div>
+          <div class="lang-option"        data-lang="it"   role="option"><span class="lang-flag">🇮🇹</span> Italiano</div>
+          <div class="lang-option"        data-lang="nl"   role="option"><span class="lang-flag">🇳🇱</span> Nederlands</div>
+          <div class="lang-option"        data-lang="pt"   role="option"><span class="lang-flag">🇵🇹</span> Português</div>
+          <div class="lang-option"        data-lang="ru"   role="option"><span class="lang-flag">🇷🇺</span> Русский</div>
+          <div class="lang-option"        data-lang="zh"   role="option"><span class="lang-flag">🇨🇳</span> 中文</div>
+        </div>
+      </div>
+
+      <!-- Hamburger -->
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Drawer -->
+<nav class="mobile-drawer" id="mobileDrawer">
+  <ul>
+    <li><a href="#hero"     data-i18n="nav_home"    onclick="closeMobile()">الرئيسية</a></li>
+    <li><a href="#catalog"  data-i18n="nav_catalog"  onclick="closeMobile()">المنتجات</a></li>
+    <li><a href="#features" data-i18n="nav_features" onclick="closeMobile()">مميزاتنا</a></li>
+    <li><a href="#footer"   data-i18n="nav_contact"  onclick="closeMobile()">اتصل بنا</a></li>
+  </ul>
+</nav>
+
+<!-- ════════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge" data-i18n="hero_badge">🏆 الأصالة والجودة منذ 2020</div>
+
+    <h1 class="hero-title">
+      <span data-i18n="hero_title_1">أحذية كرة القدم</span><br />
+      <span class="highlight" data-i18n="hero_title_2">الأصلية والكلاسيكية</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      <span data-i18n="hero_subtitle_delivery">التوصيل لجميع أنحاء المغرب</span>
+      <span class="sep">|</span>
+      <span data-i18n="hero_subtitle_city">العيون الصحراء</span>
+    </p>
+
+    <div class="hero-cta">
+      <a href="#catalog" class="btn-primary">
+        <i class="fa-solid fa-shoe-prints"></i>
+        <span data-i18n="hero_cta_browse">تصفح المجموعة</span>
+      </a>
+      <a href="https://wa.me/212691812670" target="_blank" rel="noopener" class="btn-ghost">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span data-i18n="hero_cta_contact">تواصل معنا</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <span class="stat-num">18+</span>
+      <span class="stat-label" data-i18n="stat_products">منتج حصري</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">100%</span>
+      <span class="stat-label" data-i18n="stat_original">أصلية مضمونة</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">🇲🇦</span>
+      <span class="stat-label" data-i18n="stat_delivery">توصيل وطني</span>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     CATALOG
+════════════════════════════════════════ -->
+<div id="catalog">
+<div class="section">
+  <div class="section-header">
+    <div class="section-tag" data-i18n="catalog_tag">● مجموعتنا الحصرية</div>
+    <h2 class="section-title" data-i18n="catalog_title">أحذية القدم الاحترافية</h2>
+    <div class="gold-line"></div>
+    <p class="section-subtitle" data-i18n="catalog_subtitle">أفضل الماركات العالمية – أصلية 100% ومتوفرة للطلب مباشرة عبر واتساب</p>
+  </div>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all"     data-i18n="filter_all">الكل</button>
+    <button class="filter-btn"        data-filter="original" data-i18n="filter_original">أصلية</button>
+    <button class="filter-btn"        data-filter="retro"    data-i18n="filter_retro">كلاسيكية</button>
+    <button class="filter-btn"        data-filter="premium"  data-i18n="filter_premium">بريميوم</button>
+  </div>
+
+  <!-- Products Grid -->
+  <div class="products-grid" id="productsGrid"></div>
+</div>
+</div>
+
+<!-- ════════════════════════════════════════
+     FEATURES
+════════════════════════════════════════ -->
+<section id="features">
+  <div class="features-grid">
+    <div class="feature-item">
+      <div class="feature-icon"><i class="fa-solid fa-certificate"></i></div>
+      <div class="feature-title" data-i18n="feat1_title">جودة أصلية مضمونة</div>
+      <div class="feature-text"  data-i18n="feat1_text">جميع منتجاتنا أصلية 100% من أكبر الماركات العالمية</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon"><i class="fa-solid fa-truck-fast"></i></div>
+      <div class="feature-title" data-i18n="feat2_title">توصيل سريع</div>
+      <div class="feature-text"  data-i18n="feat2_text">توصيل لجميع مدن المغرب في أقل من 48 ساعة</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon"><i class="fa-brands fa-whatsapp"></i></div>
+      <div class="feature-title" data-i18n="feat3_title">طلب عبر واتساب</div>
+      <div class="feature-text"  data-i18n="feat3_text">اطلب مباشرة عبر واتساب بكل سهولة وأمان</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon"><i class="fa-solid fa-rotate-left"></i></div>
+      <div class="feature-title" data-i18n="feat4_title">ضمان الرجوع</div>
+      <div class="feature-text"  data-i18n="feat4_text">استبدال مضمون في حال وجود أي مشكلة</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <div class="footer-logo-row">
+          <img src="/images/logo.jpg" alt="Golden Foot" class="footer-logo" />
+          <span class="footer-brand-name">GOLDEN FOOT</span>
+        </div>
+        <p class="footer-desc" data-i18n="footer_desc">
+          متجرك المتخصص في أحذية كرة القدم الأصلية والكلاسيكية. نوفر لك أفضل الماركات العالمية بجودة مضمونة وتوصيل سريع لجميع أنحاء المغرب.
+        </p>
+        <div class="footer-social">
+          <a href="https://wa.me/212691812670" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/goldenfoot.pro?igsh=MTU0ZXh3bWZoeWdtNw==" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.facebook.com/share/1AqsvDHVur/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.tiktok.com/@foot.277?_r=1&_t=ZS-98JQ3rre2WG" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <div class="footer-col-title" data-i18n="footer_links">روابط سريعة</div>
+        <ul class="footer-links">
+          <li><a href="#hero"    data-i18n="nav_home">الرئيسية</a></li>
+          <li><a href="#catalog" data-i18n="nav_catalog">المنتجات</a></li>
+          <li><a href="#features" data-i18n="nav_features">مميزاتنا</a></li>
+          <li><a href="https://wa.me/212691812670" target="_blank" data-i18n="order_now">اطلب الآن</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <div class="footer-col-title" data-i18n="footer_contact">تواصل معنا</div>
+        <div class="footer-contact-item">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>+212 691 812 670</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span data-i18n="footer_city">العيون، الصحراء المغربية</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-clock"></i>
+          <span data-i18n="footer_hours">متاح 9 ص – 10 م يومياً</span>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-truck"></i>
+          <span data-i18n="footer_delivery_info">توصيل لكل المغرب 🇲🇦</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="footer-divider" />
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 <span>Golden Foot</span> · <span data-i18n="footer_rights">جميع الحقوق محفوظة</span></p>
+      <div class="footer-bottom-links">
+        <a href="#" data-i18n="footer_privacy">سياسة الخصوصية</a>
+        <a href="#" data-i18n="footer_terms">الشروط والأحكام</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button id="back-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+<!-- ════════════════════════════════════════
+     LIGHTBOX
+════════════════════════════════════════ -->
+<div id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)" aria-label="Previous">
+    <i class="fa-solid fa-chevron-right"></i>
+  </button>
+  <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1)" aria-label="Next">
+    <i class="fa-solid fa-chevron-left"></i>
+  </button>
+  <div class="lightbox-inner">
+    <img id="lightboxImg" class="lightbox-img" src="" alt="" />
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     ORDER MODAL
+════════════════════════════════════════ -->
+<div class="modal-overlay" id="orderModal" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <!-- Header -->
+    <div class="modal-header">
+      <div class="modal-header-left">
+        <div class="modal-header-title" data-i18n="modal_title">🛒 تأكيد الطلب</div>
+        <div class="modal-product-name" id="modalProductName"></div>
+      </div>
+      <button class="modal-close" onclick="closeOrderModal()" aria-label="Close">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Form -->
+    <div class="modal-body" id="modalForm">
+      <div class="form-group">
+        <label class="form-label" for="inp-name">
+          <i class="fa-solid fa-user"></i>
+          <span data-i18n="form_name">الاسم الكامل</span>
+        </label>
+        <input id="inp-name" class="form-input" type="text" data-i18n-ph="form_name_ph" placeholder="أدخل اسمك الكامل" autocomplete="name" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="inp-phone">
+          <i class="fa-solid fa-phone"></i>
+          <span data-i18n="form_phone">رقم الهاتف</span>
+        </label>
+        <input id="inp-phone" class="form-input" type="tel" data-i18n-ph="form_phone_ph" placeholder="0612345678" autocomplete="tel" dir="ltr" />
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label" for="inp-city">
+            <i class="fa-solid fa-city"></i>
+            <span data-i18n="form_city">المدينة</span>
+          </label>
+          <input id="inp-city" class="form-input" type="text" data-i18n-ph="form_city_ph" placeholder="مثال: الرباط" autocomplete="address-level2" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="inp-size">
+            <i class="fa-solid fa-ruler"></i>
+            <span data-i18n="form_size">المقاس</span>
+          </label>
+          <select id="inp-size" class="form-select">
+            <option value="">-- اختر --</option>
+            <option value="39">39</option>
+            <option value="40">40</option>
+            <option value="41">41</option>
+            <option value="42">42</option>
+            <option value="43">43</option>
+            <option value="44">44</option>
+            <option value="45">45</option>
+            <option value="46">46</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="modal-footer" id="modalFooter">
+      <button class="btn-whatsapp" onclick="submitOrder()">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span data-i18n="form_submit">أرسل الطلب عبر واتساب</span>
+      </button>
+      <p class="modal-note">
+        <i class="fa-solid fa-lock"></i>
+        <span data-i18n="form_note">بياناتك آمنة – سيتم تحويلك مباشرة إلى واتساب</span>
+      </p>
+    </div>
+
+    <!-- Success -->
+    <div class="modal-success" id="modalSuccess">
+      <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+      <div class="success-title" data-i18n="success_title">تم إرسال طلبك!</div>
+      <p class="success-text" data-i18n="success_text">شكراً لك. سيتم تحويلك الآن إلى واتساب لإتمام الطلب مع فريقنا.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <i class="fa-solid fa-circle-check"></i>
+  <span id="toastMsg"></span>
+</div>
+
+<!-- ════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════ -->
+<script>
+/* ═══════════════════════════════════════════════
+   TRANSLATIONS
+═══════════════════════════════════════════════ */
+const TRANSLATIONS = {
+  ar: {
+    dir: 'rtl', label: 'AR',
+    brand: 'GOLDEN FOOT',
+    nav_home: 'الرئيسية', nav_catalog: 'المنتجات', nav_features: 'مميزاتنا', nav_contact: 'اتصل بنا',
+    hero_badge: '🏆 الأصالة والجودة منذ 2020',
+    hero_title_1: 'أحذية كرة القدم', hero_title_2: 'الأصلية والكلاسيكية',
+    hero_subtitle_delivery: 'التوصيل لجميع أنحاء المغرب', hero_subtitle_city: 'العيون الصحراء',
+    hero_cta_browse: 'تصفح المجموعة', hero_cta_contact: 'تواصل معنا',
+    stat_products: 'منتج حصري', stat_original: 'أصلية مضمونة', stat_delivery: 'توصيل وطني',
+    catalog_tag: '● مجموعتنا الحصرية', catalog_title: 'أحذية القدم الاحترافية',
+    catalog_subtitle: 'أفضل الماركات العالمية – أصلية 100% ومتوفرة للطلب مباشرة عبر واتساب',
+    filter_all: 'الكل', filter_original: 'أصلية', filter_retro: 'كلاسيكية', filter_premium: 'بريميوم',
+    feat1_title: 'جودة أصلية مضمونة', feat1_text: 'جميع منتجاتنا أصلية 100% من أكبر الماركات العالمية',
+    feat2_title: 'توصيل سريع',         feat2_text: 'توصيل لجميع مدن المغرب في أقل من 48 ساعة',
+    feat3_title: 'طلب عبر واتساب',     feat3_text: 'اطلب مباشرة عبر واتساب بكل سهولة وأمان',
+    feat4_title: 'ضمان الرجوع',        feat4_text: 'استبدال مضمون في حال وجود أي مشكلة',
+    order_now: 'اطلب الآن',
+    modal_title: '🛒 تأكيد الطلب',
+    form_name: 'الاسم الكامل', form_name_ph: 'أدخل اسمك الكامل',
+    form_phone: 'رقم الهاتف',  form_phone_ph: '0612345678',
+    form_city: 'المدينة',       form_city_ph: 'مثال: الرباط',
+    form_size: 'المقاس',
+    form_submit: 'أرسل الطلب عبر واتساب',
+    form_note: 'بياناتك آمنة – سيتم تحويلك مباشرة إلى واتساب',
+    success_title: 'تم إرسال طلبك!', success_text: 'شكراً لك. سيتم تحويلك الآن إلى واتساب لإتمام الطلب مع فريقنا.',
+    footer_desc: 'متجرك المتخصص في أحذية كرة القدم الأصلية والكلاسيكية. نوفر لك أفضل الماركات العالمية بجودة مضمونة وتوصيل سريع.',
+    footer_links: 'روابط سريعة', footer_contact: 'تواصل معنا',
+    footer_city: 'العيون، الصحراء المغربية', footer_hours: 'متاح 9 ص – 10 م يومياً',
+    footer_delivery_info: 'توصيل لكل المغرب 🇲🇦', footer_rights: 'جميع الحقوق محفوظة',
+    footer_privacy: 'سياسة الخصوصية', footer_terms: 'الشروط والأحكام',
+    toast_added: 'تمت الإضافة إلى الطلب',
+    wa_msg: (name, product, city, size, phone) =>
+      `مرحباً Golden Foot 👋\n\nأريد طلب:\n👟 *${product}*\n\n📋 التفاصيل:\n• الاسم: ${name}\n• الهاتف: ${phone}\n• المدينة: ${city}\n• المقاس: ${size}\n\nأرجو تأكيد التوفر والسعر. شكراً! 🌟`
+  },
+  fr: {
+    dir: 'ltr', label: 'FR',
+    brand: 'GOLDEN FOOT',
+    nav_home: 'Accueil', nav_catalog: 'Catalogue', nav_features: 'Avantages', nav_contact: 'Contact',
+    hero_badge: '🏆 Authenticité & Qualité depuis 2020',
+    hero_title_1: 'Chaussures de Football', hero_title_2: 'Originales & Classiques',
+    hero_subtitle_delivery: 'Livraison partout au Maroc', hero_subtitle_city: 'Laayoune, Sahara',
+    hero_cta_browse: 'Voir la collection', hero_cta_contact: 'Nous contacter',
+    stat_products: 'Produits exclusifs', stat_original: 'Authenticité garantie', stat_delivery: 'Livraison nationale',
+    catalog_tag: '● Notre Collection Exclusive', catalog_title: 'Chaussures de Football Pro',
+    catalog_subtitle: 'Les meilleures marques mondiales – 100% originales, commande directe via WhatsApp',
+    filter_all: 'Tous', filter_original: 'Originaux', filter_retro: 'Classiques', filter_premium: 'Premium',
+    feat1_title: 'Qualité Garantie',      feat1_text: 'Tous nos produits sont 100% authentiques des plus grandes marques',
+    feat2_title: 'Livraison Rapide',      feat2_text: 'Livraison dans toutes les villes du Maroc en moins de 48h',
+    feat3_title: 'Commande WhatsApp',     feat3_text: 'Commandez directement via WhatsApp, simple et sécurisé',
+    feat4_title: 'Garantie Retour',       feat4_text: 'Échange garanti en cas de problème',
+    order_now: 'Commander',
+    modal_title: '🛒 Confirmer la Commande',
+    form_name: 'Nom Complet',     form_name_ph: 'Entrez votre nom',
+    form_phone: 'Téléphone',      form_phone_ph: '0612345678',
+    form_city: 'Ville',           form_city_ph: 'Ex: Casablanca',
+    form_size: 'Pointure',
+    form_submit: 'Envoyer via WhatsApp',
+    form_note: 'Vos données sont sécurisées – redirection directe vers WhatsApp',
+    success_title: 'Commande Envoyée!', success_text: 'Merci. Vous allez être redirigé vers WhatsApp pour finaliser.',
+    footer_desc: "Votre spécialiste en chaussures de football originales et classiques. Les meilleures marques mondiales, livrées partout au Maroc.",
+    footer_links: 'Liens Rapides', footer_contact: 'Nous Contacter',
+    footer_city: 'Laayoune, Sahara Marocain', footer_hours: 'Disponible 9h – 22h quotidiennement',
+    footer_delivery_info: 'Livraison partout au Maroc 🇲🇦', footer_rights: 'Tous droits réservés',
+    footer_privacy: 'Politique de confidentialité', footer_terms: 'Conditions générales',
+    toast_added: 'Ajouté à la commande',
+    wa_msg: (name, product, city, size, phone) =>
+      `Bonjour Golden Foot 👋\n\nJe souhaite commander:\n👟 *${product}*\n\n📋 Détails:\n• Nom: ${name}\n• Téléphone: ${phone}\n• Ville: ${city}\n• Pointure: ${size}\n\nMerci de confirmer la disponibilité et le prix. 🌟`
+  },
+  en: {
+    dir: 'ltr', label: 'EN',
+    brand: 'GOLDEN FOOT',
+    nav_home: 'Home', nav_catalog: 'Catalog', nav_features: 'Features', nav_contact: 'Contact',
+    hero_badge: '🏆 Authenticity & Quality since 2020',
+    hero_title_1: 'Premium Football Boots', hero_title_2: 'Original & Classic',
+    hero_subtitle_delivery: 'Delivery across Morocco', hero_subtitle_city: 'Laayoune, Sahara',
+    hero_cta_browse: 'Browse Collection', hero_cta_contact: 'Contact Us',
+    stat_products: 'Exclusive Products', stat_original: 'Guaranteed Authentic', stat_delivery: 'National Delivery',
+    catalog_tag: '● Our Exclusive Collection', catalog_title: 'Professional Football Boots',
+    catalog_subtitle: "World's best brands – 100% original, order directly via WhatsApp",
+    filter_all: 'All', filter_original: 'Original', filter_retro: 'Classic', filter_premium: 'Premium',
+    feat1_title: 'Guaranteed Authentic',  feat1_text: 'All products are 100% original from top global brands',
+    feat2_title: 'Fast Delivery',         feat2_text: 'Delivered to all Moroccan cities in under 48 hours',
+    feat3_title: 'WhatsApp Orders',       feat3_text: 'Order directly via WhatsApp, easy and secure',
+    feat4_title: 'Return Guarantee',      feat4_text: 'Guaranteed exchange if there is any issue',
+    order_now: 'Order Now',
+    modal_title: '🛒 Confirm Order',
+    form_name: 'Full Name',   form_name_ph: 'Enter your full name',
+    form_phone: 'Phone',      form_phone_ph: '0612345678',
+    form_city: 'City',        form_city_ph: 'e.g. Casablanca',
+    form_size: 'Shoe Size',
+    form_submit: 'Send Order via WhatsApp',
+    form_note: 'Your data is secure – direct redirect to WhatsApp',
+    success_title: 'Order Sent!', success_text: 'Thank you! You will be redirected to WhatsApp to complete your order.',
+    footer_desc: 'Your specialist in original and classic football boots. The best global brands, guaranteed authentic, delivered across Morocco.',
+    footer_links: 'Quick Links', footer_contact: 'Contact Us',
+    footer_city: 'Laayoune, Moroccan Sahara', footer_hours: 'Available 9am – 10pm daily',
+    footer_delivery_info: 'Delivery across Morocco 🇲🇦', footer_rights: 'All rights reserved',
+    footer_privacy: 'Privacy Policy', footer_terms: 'Terms & Conditions',
+    toast_added: 'Added to order',
+    wa_msg: (name, product, city, size, phone) =>
+      `Hello Golden Foot 👋\n\nI'd like to order:\n👟 *${product}*\n\n📋 Details:\n• Name: ${name}\n• Phone: ${phone}\n• City: ${city}\n• Size: ${size}\n\nPlease confirm availability and price. Thanks! 🌟`
+  },
+  es: {
+    dir: 'ltr', label: 'ES',
+    brand: 'GOLDEN FOOT',
+    nav_home: 'Inicio', nav_catalog: 'Catálogo', nav_features: 'Características', nav_contact: 'Contacto',
+    hero_badge: '🏆 Autenticidad y Calidad desde 2020',
+    hero_title_1: 'Botas de Fútbol', hero_title_2: 'Originales y Clásicas',
+    hero_subtitle_delivery: 'Entrega en todo Marruecos', hero_subtitle_city: 'Laayoune, Sahara',
+    hero_cta_browse: 'Ver Colección', hero_cta_contact: 'Contáctanos',
+    stat_products: 'Productos exclusivos', stat_original: 'Autenticidad garantizada', stat_delivery: 'Entrega nacional',
+    catalog_tag: '● Nuestra Colección Exclusiva', catalog_title: 'Botas de Fútbol Profesionales',
+    catalog_subtitle: 'Las mejores marcas mundiales – 100% originales, pedido directo por WhatsApp',
+    filter_all: 'Todos', filter_original: 'Originales', filter_retro: 'Clásicas', filter_premium: 'Premium',
+    feat1_title: 'Calidad Garantizada',   feat1_text: 'Todos nuestros productos son 100% originales',
+    feat2_title: 'Entrega Rápida',        feat2_text: 'Entrega en todas las ciudades de Marruecos en menos de 48h',
+    feat3_title: 'Pedido por WhatsApp',   feat3_text: 'Pide directamente por WhatsApp, fácil y seguro',
+    feat4_title: 'Garantía de Devolución',feat4_text: 'Cambio garantizado si hay algún problema',
+    order_now: 'Pedir Ahora',
+    modal_title: '🛒 Confirmar Pedido',
+    form_name: 'Nombre Completo', form_name_ph: 'Ingresa tu nombre',
+    form_phone: 'Teléfono',       form_phone_ph: '0612345678',
+    form_city: 'Ciudad',          form_city_ph: 'Ej: Casablanca',
+    form_size: 'Talla',
+    form_submit: 'Enviar Pedido por WhatsApp',
+    form_note: 'Tus datos están seguros – redirección directa a WhatsApp',
+    success_title: '¡Pedido Enviado!', success_text: 'Gracias. Serás redirigido a WhatsApp para completar tu pedido.',
+    footer_desc: 'Tu especialista en botas de fútbol originales y clásicas en Marruecos.',
+    footer_links: 'Enlaces Rápidos', footer_contact: 'Contáctanos',
+    footer_city: 'Laayoune, Sahara Marroquí', footer_hours: 'Disponible 9h – 22h todos los días',
+    footer_delivery_info: 'Entrega en todo Marruecos 🇲🇦', footer_rights: 'Todos los derechos reservados',
+    footer_privacy: 'Política de Privacidad', footer_terms: 'Términos y Condiciones',
+    toast_added: 'Añadido al pedido',
+    wa_msg: (name, product, city, size, phone) =>
+      `Hola Golden Foot 👋\n\nMe gustaría pedir:\n👟 *${product}*\n\n📋 Detalles:\n• Nombre: ${name}\n• Teléfono: ${phone}\n• Ciudad: ${city}\n• Talla: ${size}\n\nPor favor confirma disponibilidad y precio. ¡Gracias! 🌟`
+  },
+  de: {
+    dir: 'ltr', label: 'DE',
+    brand: 'GOLDEN FOOT',
+    nav_home: 'Startseite', nav_catalog: 'Katalog', nav_features: 'Vorteile', nav_contact: 'Kontakt',
+    hero_badge: '🏆 Echtheit & Qualität seit 2020',
+    hero_title_1: 'Fußballschuhe', hero_title_2: 'Original & Klassisch',
+    hero_subtitle_delivery: 'Lieferung überall in Marokko', hero_subtitle_city: 'Laayoune, Sahara',
+    hero_cta_browse: 'Kollektion ansehen', hero_cta_contact: 'Kontakt',
+    stat_products: 'Exklusive Produkte', stat_original: 'Echtheit garantiert', stat_delivery: 'Landesweite Lieferung',
+    catalog_tag: '● Unsere Exklusive Kollektion', catalog_title: 'Professionelle Fußballschuhe',
+    catalog_subtitle: 'Die besten Weltmarken – 100% original, Bestellung direkt per WhatsApp',
+    filter_all: 'Alle', filter_original: 'Original', filter_retro: 'Klassisch', filter_premium: 'Premium',
+    feat1_title: 'Echtheit Garantiert',   feat1_text: 'Alle Produkte sind 100% original von Top-Marken',
+    feat2_title: 'Schnelle Lieferung',    feat2_text: 'Lieferung in alle Städte Marokkos in unter 48 Stunden',
+    feat3_title: 'WhatsApp-Bestellung',   feat3_text: 'Direkt per WhatsApp bestellen, einfach und sicher',
+    feat4_title: 'Rückgabegarantie',      feat4_text: 'Garantierter Umtausch bei Problemen',
+    order_now: 'Jetzt Bestellen',
+    modal_title: '🛒 Bestellung Bestätigen',
+    form_name: 'Vollständiger Name', form_name_ph: 'Gib deinen Namen ein',
+    form_phone: 'Telefon',           form_phone_ph: '0612345678',
+    form_city: 'Stadt',              form_city_ph: 'z.B. Casablanca',
+    form_size: 'Schuhgröße',
+    form_submit: 'Bestellung per WhatsApp senden',
+    form_note: 'Deine Daten sind sicher – direkte Weiterleitung zu WhatsApp',
+    success_title: 'Bestellung Gesendet!', success_text: 'Danke! Du wirst jetzt zu WhatsApp weitergeleitet.',
+    footer_desc: 'Ihr Spezialist für originale und klassische Fußballschuhe in Marokko.',
+    footer_links: 'Schnelllinks', footer_contact: 'Kontakt',
+    footer_city: 'Laayoune, Marokkanische Sahara', footer_hours: 'Täglich 9–22 Uhr',
+    footer_delivery_info: 'Lieferung überall in Marokko 🇲🇦', footer_rights: 'Alle Rechte vorbehalten',
+    footer_privacy: 'Datenschutz', footer_terms: 'AGB',
+    toast_added: 'Zur Bestellung hinzugefügt',
+    wa_msg: (name, product, city, size, phone) =>
+      `Hallo Golden Foot 👋\n\nIch möchte bestellen:\n👟 *${product}*\n\n📋 Details:\n• Name: ${name}\n• Telefon: ${phone}\n• Stadt: ${city}\n• Größe: ${size}\n\nBitte Verfügbarkeit und Preis bestätigen. Danke! 🌟`
+  },
+  it: {
+    dir: 'ltr', label: 'IT',
+    brand: 'GOLDEN FOOT',
+    nav_home: 'Home', nav_catalog: 'Catalogo', nav_features: 'Vantaggi', nav_contact: 'Contatti',
+    hero_badge: '🏆 Autenticità e Qualità dal 2020',
+    hero_title_1: 'Scarpe da Calcio', hero_title_2: 'Originali e Classiche',
+    hero_subtitle_delivery: 'Consegna in tutto il Marocco', hero_subtitle_city: 'Laayoune, Sahara',
+    hero_cta_browse: 'Sfoglia Collezione', hero_cta_contact: 'Contattaci',
+    stat_products: 'Prodotti Esclusivi', stat_original: 'Autenticità Garantita', stat_delivery: 'Consegna Nazionale',
+    catalog_tag: '● La Nostra Collezione', catalog_title: 'Scarpe da Calcio Professionali',
+    catalog_subtitle: 'I migliori brand mondiali – 100% originali, ordine diretto via WhatsApp',
+    filter_all: 'Tutti', filter_original: 'Originali', filter_retro: 'Classiche', filter_premium: 'Premium',
+    feat1_title: 'Qualità Garantita',     feat1_text: 'Tutti i prodotti sono 100% originali',
+    feat2_title: 'Consegna Rapida',       feat2_text: 'Consegna in tutte le città del Marocco in meno di 48 ore',
+    feat3_title: 'Ordine WhatsApp',       feat3_text: 'Ordina direttamente via WhatsApp, semplice e sicuro',
+    feat4_title: 'Garanzia di Reso',      feat4_text: 'Cambio garantito in caso di problemi',
+    order_now: 'Ordina Ora',
+    modal_title: '🛒 Conferma Ordine',
+    form_name: 'Nome Completo', form_name_ph: 'Inserisci il tuo nome',
+    form_phone: 'Telefono',     form_phone_ph: '0612345678',
+    form_city: 'Città',         form_city_ph: 'Es: Casablanca',
+    form_size: 'Taglia',
+    form_submit: 'Invia Ordine via WhatsApp',
+    form_note: 'I tuoi dati sono al sicuro – reindirizzamento diretto a WhatsApp',
+    success_title: 'Ordine Inviato!', success_text: "Grazie! Verrai reindirizzato a WhatsApp per completare l'ordine.",
+    footer_desc: 'Il tuo specialista in scarpe da calcio originali e classiche in Marocco.',
+    footer_links: 'Link Rapidi', footer_contact: 'Contattaci',
+    footer_city: 'Laayoune, Sahara Marocchino', footer_hours: 'Disponibile 9–22 ogni giorno',
+    footer_delivery_info: 'Consegna in tutto il Marocco 🇲🇦', footer_rights: 'Tutti i diritti riservati',
+    footer_privacy: 'Privacy', footer_terms: 'Termini',
+    toast_added: 'Aggiunto all\'ordine',
+    wa_msg: (name, product, city, size, phone) =>
+      `Ciao Golden Foot 👋\n\nVorrei ordinare:\n👟 *${product}*\n\n📋 Dettagli:\n• Nome: ${name}\n• Telefono: ${phone}\n• Città: ${city}\n• Taglia: ${size}\n\nConferma disponibilità e prezzo. Grazie! 🌟`
+  },
+  nl: {
+    dir: 'ltr', label: 'NL',
+    brand: 'GOLDEN FOOT',
+    nav_home: 'Home', nav_catalog: 'Catalogus', nav_features: 'Voordelen', nav_contact: 'Contact',
+    hero_badge: '🏆 Authenticiteit & Kwaliteit sinds 2020',
+    hero_title_1: 'Voetbalschoenen', hero_title_2: 'Origineel & Klassiek',
+    hero_subtitle_delivery: 'Levering door heel Marokko', hero_subtitle_city: 'Laayoune, Sahara',
+    hero_cta_browse: 'Bekijk Collectie', hero_cta_contact: 'Neem Contact Op',
+    stat_products: 'Exclusieve Producten', stat_original: 'Authenticiteit Gegarandeerd', stat_delivery: 'Nationale Levering',
+    catalog_tag: '● Onze Exclusieve Collectie', catalog_title: 'Professionele Voetbalschoenen',
+    catalog_subtitle: 'De beste wereldmerken – 100% origineel, direct bestellen via WhatsApp',
+    filter_all: 'Alles', filter_original: 'Origineel', filter_retro: 'Klassiek', filter_premium: 'Premium',
+    feat1_title: 'Kwaliteit Gegarandeerd', feat1_text: 'Alle producten zijn 100% origineel van topmerken',
+    feat2_title: 'Snelle Levering',        feat2_text: 'Levering in alle steden van Marokko binnen 48 uur',
+    feat3_title: 'Bestellen via WhatsApp', feat3_text: 'Bestel direct via WhatsApp, eenvoudig en veilig',
+    feat4_title: 'Retourgarantie',         feat4_text: 'Gegarandeerde omruiling bij problemen',
+    order_now: 'Nu Bestellen',
+    modal_title: '🛒 Bestelling Bevestigen',
+    form_name: 'Volledige Naam', form_name_ph: 'Voer je naam in',
+    form_phone: 'Telefoon',      form_phone_ph: '0612345678',
+    form_city: 'Stad',           form_city_ph: 'Bijv: Casablanca',
+    form_size: 'Schoenmaat',
+    form_submit: 'Bestelling via WhatsApp sturen',
+    form_note: 'Je gegevens zijn veilig – directe omleiding naar WhatsApp',
+    success_title: 'Bestelling Verzonden!', success_text: 'Bedankt! Je wordt doorgestuurd naar WhatsApp om te voltooien.',
+    footer_desc: 'Uw specialist in originele en klassieke voetbalschoenen in Marokko.',
+    footer_links: 'Snelle Links', footer_contact: 'Contact',
+    footer_city: 'Laayoune, Marokkaanse Sahara', footer_hours: 'Beschikbaar 9u – 22u dagelijks',
+    footer_delivery_info: 'Levering door heel Marokko 🇲🇦', footer_rights: 'Alle rechten voorbehouden',
+    footer_privacy: 'Privacybeleid', footer_terms: 'Voorwaarden',
+    toast_added: 'Toegevoegd aan bestelling',
+    wa_msg: (name, product, city, size, phone) =>
+      `Hallo Golden Foot 👋\n\nIk wil bestellen:\n👟 *${product}*\n\n📋 Details:\n• Naam: ${name}\n• Telefoon: ${phone}\n• Stad: ${city}\n• Maat: ${size}\n\nBevestig beschikbaarheid en prijs. Bedankt! 🌟`
+  },
+  pt: {
+    dir: 'ltr', label: 'PT',
+    brand: 'GOLDEN FOOT',
+    nav_home: 'Início', nav_catalog: 'Catálogo', nav_features: 'Vantagens', nav_contact: 'Contacto',
+    hero_badge: '🏆 Autenticidade & Qualidade desde 2020',
+    hero_title_1: 'Chuteiras de Futebol', hero_title_2: 'Originais e Clássicas',
+    hero_subtitle_delivery: 'Entrega em todo o Marrocos', hero_subtitle_city: 'Laayoune, Sahara',
+    hero_cta_browse: 'Ver Coleção', hero_cta_contact: 'Fale Connosco',
+    stat_products: 'Produtos Exclusivos', stat_original: 'Autenticidade Garantida', stat_delivery: 'Entrega Nacional',
+    catalog_tag: '● Nossa Coleção Exclusiva', catalog_title: 'Chuteiras Profissionais',
+    catalog_subtitle: 'As melhores marcas mundiais – 100% originais, pedido direto pelo WhatsApp',
+    filter_all: 'Todos', filter_original: 'Originais', filter_retro: 'Clássicas', filter_premium: 'Premium',
+    feat1_title: 'Qualidade Garantida',  feat1_text: 'Todos os produtos são 100% originais',
+    feat2_title: 'Entrega Rápida',       feat2_text: 'Entrega em todas as cidades do Marrocos em menos de 48h',
+    feat3_title: 'Pedido WhatsApp',      feat3_text: 'Peça diretamente pelo WhatsApp, fácil e seguro',
+    feat4_title: 'Garantia de Troca',    feat4_text: 'Troca garantida em caso de qualquer problema',
+    order_now: 'Encomendar Agora',
+    modal_title: '🛒 Confirmar Encomenda',
+    form_name: 'Nome Completo', form_name_ph: 'Insira o seu nome',
+    form_phone: 'Telefone',     form_phone_ph: '0612345678',
+    form_city: 'Cidade',        form_city_ph: 'Ex: Casablanca',
+    form_size: 'Tamanho',
+    form_submit: 'Enviar Encomenda pelo WhatsApp',
+    form_note: 'Os seus dados estão seguros – redirecionamento direto para WhatsApp',
+    success_title: 'Encomenda Enviada!', success_text: 'Obrigado! Será redirecionado para o WhatsApp para finalizar.',
+    footer_desc: 'O seu especialista em chuteiras de futebol originais e clássicas em Marrocos.',
+    footer_links: 'Links Rápidos', footer_contact: 'Contacte-nos',
+    footer_city: 'Laayoune, Saara Marroquino', footer_hours: 'Disponível 9h – 22h diariamente',
+    footer_delivery_info: 'Entrega em todo o Marrocos 🇲🇦', footer_rights: 'Todos os direitos reservados',
+    footer_privacy: 'Política de Privacidade', footer_terms: 'Termos e Condições',
+    toast_added: 'Adicionado ao pedido',
+    wa_msg: (name, product, city, size, phone) =>
+      `Olá Golden Foot 👋\n\nGostaria de encomendar:\n👟 *${product}*\n\n📋 Detalhes:\n• Nome: ${name}\n• Telefone: ${phone}\n• Cidade: ${city}\n• Tamanho: ${size}\n\nConfirme disponibilidade e preço. Obrigado! 🌟`
+  },
+  ru: {
+    dir: 'ltr', label: 'RU',
+    brand: 'GOLDEN FOOT',
+    nav_home: 'Главная', nav_catalog: 'Каталог', nav_features: 'Преимущества', nav_contact: 'Контакты',
+    hero_badge: '🏆 Подлинность и качество с 2020',
+    hero_title_1: 'Футбольные Бутсы', hero_title_2: 'Оригинальные и Классические',
+    hero_subtitle_delivery: 'Доставка по всему Марокко', hero_subtitle_city: 'Лаюн, Сахара',
+    hero_cta_browse: 'Смотреть Коллекцию', hero_cta_contact: 'Связаться с нами',
+    stat_products: 'Эксклюзивных товаров', stat_original: 'Подлинность гарантирована', stat_delivery: 'Доставка по стране',
+    catalog_tag: '● Наша Эксклюзивная Коллекция', catalog_title: 'Профессиональные Футбольные Бутсы',
+    catalog_subtitle: 'Лучшие мировые бренды – 100% оригинал, заказ напрямую через WhatsApp',
+    filter_all: 'Все', filter_original: 'Оригинальные', filter_retro: 'Классические', filter_premium: 'Премиум',
+    feat1_title: 'Гарантированное Качество', feat1_text: 'Все товары на 100% оригинальные от топовых брендов',
+    feat2_title: 'Быстрая Доставка',         feat2_text: 'Доставка по всем городам Марокко менее чем за 48 часов',
+    feat3_title: 'Заказ через WhatsApp',      feat3_text: 'Заказывайте напрямую через WhatsApp, просто и безопасно',
+    feat4_title: 'Гарантия Возврата',         feat4_text: 'Гарантированный обмен при возникновении проблем',
+    order_now: 'Заказать сейчас',
+    modal_title: '🛒 Подтвердить Заказ',
+    form_name: 'Полное Имя',   form_name_ph: 'Введите ваше имя',
+    form_phone: 'Телефон',     form_phone_ph: '0612345678',
+    form_city: 'Город',        form_city_ph: 'Напр: Casablanca',
+    form_size: 'Размер',
+    form_submit: 'Отправить Заказ через WhatsApp',
+    form_note: 'Ваши данные в безопасности – прямое перенаправление в WhatsApp',
+    success_title: 'Заказ Отправлен!', success_text: 'Спасибо! Вы будете перенаправлены в WhatsApp для завершения.',
+    footer_desc: 'Ваш специалист по оригинальным и классическим футбольным бутсам в Марокко.',
+    footer_links: 'Быстрые Ссылки', footer_contact: 'Связаться',
+    footer_city: 'Лаюн, Марокканская Сахара', footer_hours: 'Работаем 9:00 – 22:00 ежедневно',
+    footer_delivery_info: 'Доставка по всему Марокко 🇲🇦', footer_rights: 'Все права защищены',
+    footer_privacy: 'Политика конфиденциальности', footer_terms: 'Условия использования',
+    toast_added: 'Добавлено в заказ',
+    wa_msg: (name, product, city, size, phone) =>
+      `Привет Golden Foot 👋\n\nХочу заказать:\n👟 *${product}*\n\n📋 Детали:\n• Имя: ${name}\n• Телефон: ${phone}\n• Город: ${city}\n• Размер: ${size}\n\nПожалуйста подтвердите наличие и цену. Спасибо! 🌟`
+  },
+  zh: {
+    dir: 'ltr', label: '中文',
+    brand: 'GOLDEN FOOT',
+    nav_home: '首页', nav_catalog: '产品', nav_features: '优势', nav_contact: '联系我们',
+    hero_badge: '🏆 正品品质，自2020年',
+    hero_title_1: '足球鞋', hero_title_2: '原版与经典款',
+    hero_subtitle_delivery: '摩洛哥全国配送', hero_subtitle_city: '拉乌恩，撒哈拉',
+    hero_cta_browse: '浏览系列', hero_cta_contact: '联系我们',
+    stat_products: '独家产品', stat_original: '品质保证', stat_delivery: '全国配送',
+    catalog_tag: '● 我们的独家系列', catalog_title: '专业足球鞋',
+    catalog_subtitle: '全球最佳品牌 – 100%正品，直接通过WhatsApp下单',
+    filter_all: '全部', filter_original: '原版', filter_retro: '经典', filter_premium: '高级',
+    feat1_title: '品质保证',      feat1_text: '所有产品均为顶级品牌100%正品',
+    feat2_title: '快速配送',      feat2_text: '48小时内送达摩洛哥各城市',
+    feat3_title: 'WhatsApp下单', feat3_text: '直接通过WhatsApp下单，简单安全',
+    feat4_title: '退换保证',      feat4_text: '出现问题时保证退换',
+    order_now: '立即订购',
+    modal_title: '🛒 确认订单',
+    form_name: '全名',     form_name_ph: '请输入您的姓名',
+    form_phone: '电话',    form_phone_ph: '0612345678',
+    form_city: '城市',     form_city_ph: '例如：卡萨布兰卡',
+    form_size: '鞋码',
+    form_submit: '通过WhatsApp发送订单',
+    form_note: '您的信息安全 – 直接跳转到WhatsApp',
+    success_title: '订单已发送！', success_text: '感谢您！您将被重定向到WhatsApp完成订单。',
+    footer_desc: '您在摩洛哥的正版和经典足球鞋专家。',
+    footer_links: '快速链接', footer_contact: '联系我们',
+    footer_city: '拉乌恩，摩洛哥撒哈拉', footer_hours: '每日 9:00 – 22:00',
+    footer_delivery_info: '摩洛哥全国配送 🇲🇦', footer_rights: '版权所有',
+    footer_privacy: '隐私政策', footer_terms: '条款与条件',
+    toast_added: '已添加到订单',
+    wa_msg: (name, product, city, size, phone) =>
+      `你好 Golden Foot 👋\n\n我想订购:\n👟 *${product}*\n\n📋 详情:\n• 姓名: ${name}\n• 电话: ${phone}\n• 城市: ${city}\n• 尺码: ${size}\n\n请确认库存和价格。谢谢！🌟`
+  }
+};
+
+/* ═══════════════════════════════════════════════
+   PRODUCT DATA
+═══════════════════════════════════════════════ */
+const PRODUCTS = [
+  {
+    id: 1, img: '/images/p01.jpg', category: 'premium',
+    brand: 'Nike', badge: 'HOT',
+    name: { ar: 'نايك فانتوم GX إيليت', fr: 'Nike Phantom GX Elite', en: 'Nike Phantom GX Elite', es: 'Nike Phantom GX Elite', de: 'Nike Phantom GX Elite', it: 'Nike Phantom GX Elite', nl: 'Nike Phantom GX Elite', pt: 'Nike Phantom GX Elite', ru: 'Nike Phantom GX Elite', zh: '耐克幻影 GX Elite' },
+    desc: { ar: 'دقة استثنائية وتحكم في الكرة مع تقنية Gripknit المتطورة', fr: 'Précision exceptionnelle avec technologie Gripknit avancée', en: 'Exceptional precision with advanced Gripknit technology', es: 'Precisión excepcional con tecnología Gripknit avanzada', de: 'Außergewöhnliche Präzision mit Gripknit-Technologie', it: 'Precisione eccezionale con tecnologia Gripknit', nl: 'Uitzonderlijke precisie met Gripknit technologie', pt: 'Precisão excepcional com tecnologia Gripknit', ru: 'Исключительная точность с технологией Gripknit', zh: '卓越精准，采用先进Gripknit技术' }
+  },
+  {
+    id: 2, img: '/images/p02.jpg', category: 'premium',
+    brand: 'Adidas', badge: 'HOT',
+    name: { ar: 'أديداس بريداتور إيليت', fr: 'Adidas Predator Elite', en: 'Adidas Predator Elite', es: 'Adidas Predator Elite', de: 'Adidas Predator Elite', it: 'Adidas Predator Elite', nl: 'Adidas Predator Elite', pt: 'Adidas Predator Elite', ru: 'Adidas Predator Elite', zh: '阿迪达斯猎鹰精英版' },
+    desc: { ar: 'سيطرة مطلقة على الكرة مع نقاط الإمساك المطاطية المتقدمة', fr: 'Contrôle absolu du ballon avec points de saisie en caoutchouc', en: 'Absolute ball control with advanced rubber grip zones', es: 'Control absoluto del balón con zonas de agarre avanzadas', de: 'Absolute Ballkontrolle mit fortschrittlichen Gummigriffsohlen', it: 'Controllo assoluto del pallone con zone in gomma avanzate', nl: 'Absolute balcontrole met geavanceerde rubberen gripzones', pt: 'Controle absoluto da bola com zonas de aderência', ru: 'Абсолютный контроль мяча с резиновыми зонами сцепления', zh: '绝对控球，采用先进橡胶抓地区域' }
+  },
+  {
+    id: 3, img: '/images/p03.jpg', category: 'original',
+    brand: 'Nike', badge: 'NEW',
+    name: { ar: 'نايك ميركوريال سوبرفلاي 9', fr: 'Nike Mercurial Superfly 9', en: 'Nike Mercurial Superfly 9', es: 'Nike Mercurial Superfly 9', de: 'Nike Mercurial Superfly 9', it: 'Nike Mercurial Superfly 9', nl: 'Nike Mercurial Superfly 9', pt: 'Nike Mercurial Superfly 9', ru: 'Nike Mercurial Superfly 9', zh: '耐克水银超飞9' },
+    desc: { ar: 'السرعة القصوى مع تقنية Vaporposite الخفيفة والقوية', fr: 'Vitesse maximale avec technologie Vaporposite légère', en: 'Maximum speed with lightweight Vaporposite technology', es: 'Velocidad máxima con tecnología Vaporposite ligera', de: 'Maximale Geschwindigkeit mit leichter Vaporposite-Technologie', it: 'Velocità massima con tecnologia Vaporposite leggera', nl: 'Maximale snelheid met lichte Vaporposite-technologie', pt: 'Velocidade máxima com tecnologia Vaporposite leve', ru: 'Максимальная скорость с легкой технологией Vaporposite', zh: '最大速度，采用轻盈Vaporposite技术' }
+  },
+  {
+    id: 4, img: '/images/p04.jpg', category: 'retro',
+    brand: 'Puma', badge: null,
+    name: { ar: 'بوما كينج ألتيميت', fr: 'Puma King Ultimate', en: 'Puma King Ultimate', es: 'Puma King Ultimate', de: 'Puma King Ultimate', it: 'Puma King Ultimate', nl: 'Puma King Ultimate', pt: 'Puma King Ultimate', ru: 'Puma King Ultimate', zh: '彪马王者终极版' },
+    desc: { ar: 'أسطورة كلاسيكية بجلد الكنغر الأصيل للمس مثالي', fr: 'Légende classique en cuir kangourou authentique', en: 'Classic legend in authentic kangaroo leather for perfect touch', es: 'Leyenda clásica en cuero canguro auténtico', de: 'Klassische Legende aus echtem Känguruleder', it: 'Leggenda classica in autentico cuoio canguro', nl: 'Klassieke legende in authentiek kangoeroe-leer', pt: 'Lenda clássica em couro de canguru autêntico', ru: 'Классическая легенда из натуральной кожи кенгуру', zh: '经典传奇，采用正品袋鼠皮' }
+  },
+  {
+    id: 5, img: '/images/p05.jpg', category: 'retro',
+    brand: 'Adidas', badge: null,
+    name: { ar: 'أديداس كوبا موندي الكلاسيكي', fr: 'Adidas Copa Mundial Classic', en: 'Adidas Copa Mundial Classic', es: 'Adidas Copa Mundial Clásico', de: 'Adidas Copa Mundial Klassik', it: 'Adidas Copa Mundial Classico', nl: 'Adidas Copa Mundial Klassiek', pt: 'Adidas Copa Mundial Clássico', ru: 'Adidas Copa Mundial Классик', zh: '阿迪达斯世界杯经典款' },
+    desc: { ar: 'الحذاء الكلاسيكي الأكثر مبيعاً في التاريخ بجلد عجل فاخر', fr: 'La chaussure classique la plus vendue de l\'histoire', en: 'The best-selling classic boot in history with premium calfskin', es: 'La bota clásica más vendida de la historia', de: 'Der meistverkaufte klassische Schuh der Geschichte', it: 'Lo scarpino classico più venduto della storia', nl: 'De bestverkochte klassieke schoen in de geschiedenis', pt: 'A chuteira clássica mais vendida da história', ru: 'Самый продаваемый классический ботинок в истории', zh: '史上最畅销经典足球鞋' }
+  },
+  {
+    id: 6, img: '/images/p06.jpg', category: 'original',
+    brand: 'Nike', badge: null,
+    name: { ar: 'نايك تيمبو ليجيند 10', fr: 'Nike Tiempo Legend 10', en: 'Nike Tiempo Legend 10', es: 'Nike Tiempo Legend 10', de: 'Nike Tiempo Legend 10', it: 'Nike Tiempo Legend 10', nl: 'Nike Tiempo Legend 10', pt: 'Nike Tiempo Legend 10', ru: 'Nike Tiempo Legend 10', zh: '耐克传奇10' },
+    desc: { ar: 'راحة فائقة بجلد طبيعي ناعم وتحكم استثنائي في الملعب', fr: 'Confort supérieur avec cuir naturel doux et contrôle exceptionnel', en: 'Superior comfort with soft natural leather and exceptional control', es: 'Comodidad superior con cuero natural suave', de: 'Überlegener Komfort mit weichem Naturleder', it: 'Comfort superiore con morbida pelle naturale', nl: 'Superieur comfort met zacht natuurleer', pt: 'Conforto superior com couro natural macio', ru: 'Превосходный комфорт с мягкой натуральной кожей', zh: '卓越舒适，采用柔软天然皮革' }
+  },
+  {
+    id: 7, img: '/images/p07.jpg', category: 'premium',
+    brand: 'Adidas', badge: 'NEW',
+    name: { ar: 'أديداس إكس سبيدبورتال 1', fr: 'Adidas X Speedportal 1', en: 'Adidas X Speedportal 1', es: 'Adidas X Speedportal 1', de: 'Adidas X Speedportal 1', it: 'Adidas X Speedportal 1', nl: 'Adidas X Speedportal 1', pt: 'Adidas X Speedportal 1', ru: 'Adidas X Speedportal 1', zh: '阿迪达斯X速度门户1' },
+    desc: { ar: 'الأخف وزناً مع هيكل Speedframe المتكامل للسرعة الانفجارية', fr: 'Ultra-léger avec structure Speedframe intégrée pour vitesse explosive', en: 'Ultra-light with integrated Speedframe for explosive speed', es: 'Ultraligero con estructura Speedframe integrada', de: 'Ultraleicht mit integriertem Speedframe für explosive Geschwindigkeit', it: 'Ultra-leggero con struttura Speedframe integrata', nl: 'Ultra-licht met geïntegreerd Speedframe voor explosieve snelheid', pt: 'Ultra-leve com estrutura Speedframe integrada', ru: 'Ультралегкий с интегрированной рамой Speedframe', zh: '超轻量，集成Speedframe爆发力框架' }
+  },
+  {
+    id: 8, img: '/images/p08.jpg', category: 'original',
+    brand: 'New Balance', badge: null,
+    name: { ar: 'نيو بالانس فيورون V7+', fr: 'New Balance Furon V7+', en: 'New Balance Furon V7+', es: 'New Balance Furon V7+', de: 'New Balance Furon V7+', it: 'New Balance Furon V7+', nl: 'New Balance Furon V7+', pt: 'New Balance Furon V7+', ru: 'New Balance Furon V7+', zh: '新百伦未来V7+' },
+    desc: { ar: 'تحكم استثنائي مع نعل Hypoknit المبتكر وتكيف مثالي للقدم', fr: 'Contrôle exceptionnel avec semelle Hypoknit innovante', en: 'Exceptional control with innovative Hypoknit upper and perfect fit', es: 'Control excepcional con parte superior Hypoknit innovadora', de: 'Außergewöhnliche Kontrolle mit innovativem Hypoknit-Obermaterial', it: 'Controllo eccezionale con tomaia Hypoknit innovativa', nl: 'Uitzonderlijke controle met innovatief Hypoknit-bovendeel', pt: 'Controle excepcional com cabedal Hypoknit inovador', ru: 'Исключительный контроль с инновационным верхом Hypoknit', zh: '卓越控制，采用创新Hypoknit鞋面' }
+  },
+  {
+    id: 9, img: '/images/p09.jpg', category: 'original',
+    brand: 'Under Armour', badge: null,
+    name: { ar: 'أندر أرمور ماغنيتيكو بريميير', fr: 'Under Armour Magnetico Premier', en: 'Under Armour Magnetico Premier', es: 'Under Armour Magnetico Premier', de: 'Under Armour Magnetico Premier', it: 'Under Armour Magnetico Premier', nl: 'Under Armour Magnetico Premier', pt: 'Under Armour Magnetico Premier', ru: 'Under Armour Magnetico Premier', zh: 'UA磁力首选版' },
+    desc: { ar: 'تقنية UA Ghost lace لراحة مثلى وقبضة ثابتة طوال المباراة', fr: 'Technologie UA Ghost lace pour confort optimal et maintien parfait', en: 'UA Ghost lace technology for optimal comfort and lockdown fit', es: 'Tecnología UA Ghost lace para comodidad óptima', de: 'UA Ghost-Schnürsenkeltechnologie für optimalen Komfort', it: 'Tecnologia UA Ghost lace per comfort ottimale', nl: 'UA Ghost lace-technologie voor optimaal comfort', pt: 'Tecnologia UA Ghost lace para conforto ideal', ru: 'Технология UA Ghost lace для оптимального комфорта', zh: 'UA幽灵绑带技术，最优舒适' }
+  },
+  {
+    id: 10, img: '/images/p10.jpg', category: 'retro',
+    brand: 'Nike', badge: null,
+    name: { ar: 'نايك بريمير II كلاسيك', fr: 'Nike Premier II Classic', en: 'Nike Premier II Classic', es: 'Nike Premier II Clásico', de: 'Nike Premier II Klassisch', it: 'Nike Premier II Classico', nl: 'Nike Premier II Klassiek', pt: 'Nike Premier II Clássico', ru: 'Nike Premier II Классический', zh: '耐克首席II经典版' },
+    desc: { ar: 'التصميم الكلاسيكي بجلد طبيعي ناعم يعيد روح كرة القدم الأصيلة', fr: 'Design classique en cuir naturel doux qui ravive l\'esprit du football', en: 'Classic design with soft natural leather reviving the soul of football', es: 'Diseño clásico en cuero suave que revive el espíritu del fútbol', de: 'Klassisches Design aus weichem Leder, das den Geist des Fußballs wiederbelebt', it: 'Design classico in morbida pelle naturale che ravviva lo spirito del calcio', nl: 'Klassiek ontwerp met zacht leer dat de ziel van voetbal herleeft', pt: 'Design clássico em couro suave que revive o espírito do futebol', ru: 'Классический дизайн из мягкой кожи, возрождающий дух футбола', zh: '经典设计，柔软天然皮革，重燃足球精神' }
+  },
+  {
+    id: 11, img: '/images/p11.jpg', category: 'premium',
+    brand: 'Adidas', badge: null,
+    name: { ar: 'أديداس بريداتور أكيوراسي 1', fr: 'Adidas Predator Accuracy 1', en: 'Adidas Predator Accuracy 1', es: 'Adidas Predator Accuracy 1', de: 'Adidas Predator Accuracy 1', it: 'Adidas Predator Accuracy 1', nl: 'Adidas Predator Accuracy 1', pt: 'Adidas Predator Accuracy 1', ru: 'Adidas Predator Accuracy 1', zh: '阿迪达斯猎鹰精准1' },
+    desc: { ar: 'دقة عالية في التمرير والتسديد مع تقنية Hybrid Touch الفريدة', fr: 'Haute précision en passe et en tir avec technologie Hybrid Touch unique', en: 'High precision in passing and shooting with unique Hybrid Touch technology', es: 'Alta precisión en pase y tiro con tecnología Hybrid Touch', de: 'Hohe Präzision bei Pässen und Schüssen mit Hybrid Touch', it: 'Alta precisione nel passaggio e nel tiro con tecnologia Hybrid Touch', nl: 'Hoge precisie bij passen en schieten met Hybrid Touch-technologie', pt: 'Alta precisão em passe e chute com tecnologia Hybrid Touch', ru: 'Высокая точность в передачах и ударах с технологией Hybrid Touch', zh: '高精度传球和射门，采用独特Hybrid Touch技术' }
+  },
+  {
+    id: 12, img: '/images/p12.jpg', category: 'original',
+    brand: 'Puma', badge: null,
+    name: { ar: 'بوما فيوتشر 7 ألتيميت', fr: 'Puma Future 7 Ultimate', en: 'Puma Future 7 Ultimate', es: 'Puma Future 7 Ultimate', de: 'Puma Future 7 Ultimate', it: 'Puma Future 7 Ultimate', nl: 'Puma Future 7 Ultimate', pt: 'Puma Future 7 Ultimate', ru: 'Puma Future 7 Ultimate', zh: '彪马未来7终极版' },
+    desc: { ar: 'تكيف خارق مع شريط FUZIONFIT360 للحصول على أفضل ملاءمة', fr: 'Adaptation surpuissante avec bande FUZIONFIT360 pour le meilleur ajustement', en: 'Superb adaptability with FUZIONFIT360 band for the best fit', es: 'Adaptabilidad excepcional con banda FUZIONFIT360', de: 'Außergewöhnliche Anpassungsfähigkeit mit FUZIONFIT360-Band', it: 'Adattabilità eccezionale con fascia FUZIONFIT360', nl: 'Buitengewone aanpasbaarheid met FUZIONFIT360-band', pt: 'Adaptabilidade excepcional com banda FUZIONFIT360', ru: 'Превосходная адаптация с лентой FUZIONFIT360', zh: '超强适应性，FUZIONFIT360绑带' }
+  },
+  {
+    id: 13, img: '/images/p13.jpg', category: 'premium',
+    brand: 'Nike', badge: null,
+    name: { ar: 'نايك زوم فابور 15 إيليت', fr: 'Nike Zoom Vapor 15 Elite', en: 'Nike Zoom Vapor 15 Elite', es: 'Nike Zoom Vapor 15 Elite', de: 'Nike Zoom Vapor 15 Elite', it: 'Nike Zoom Vapor 15 Elite', nl: 'Nike Zoom Vapor 15 Elite', pt: 'Nike Zoom Vapor 15 Elite', ru: 'Nike Zoom Vapor 15 Elite', zh: '耐克缩放蒸汽15精英版' },
+    desc: { ar: 'استجابة سريعة مع Nike Air Zoom للانطلاق المتفجر في كل خطوة', fr: 'Réponse rapide avec Nike Air Zoom pour une explosivité maximale', en: 'Fast response with Nike Air Zoom for explosive take-off every step', es: 'Respuesta rápida con Nike Air Zoom para despegue explosivo', de: 'Schnelle Reaktion mit Nike Air Zoom für explosiven Absprung', it: 'Risposta rapida con Nike Air Zoom per decollo esplosivo', nl: 'Snelle respons met Nike Air Zoom voor explosieve aftrap', pt: 'Resposta rápida com Nike Air Zoom para decolagem explosiva', ru: 'Быстрый отклик с Nike Air Zoom для взрывного отрыва', zh: '快速响应，Nike Air Zoom爆发起步' }
+  },
+  {
+    id: 14, img: '/images/p14.jpg', category: 'retro',
+    brand: 'Mizuno', badge: null,
+    name: { ar: 'ميزونو موريليا نيو IV', fr: 'Mizuno Morelia Neo IV', en: 'Mizuno Morelia Neo IV', es: 'Mizuno Morelia Neo IV', de: 'Mizuno Morelia Neo IV', it: 'Mizuno Morelia Neo IV', nl: 'Mizuno Morelia Neo IV', pt: 'Mizuno Morelia Neo IV', ru: 'Mizuno Morelia Neo IV', zh: '美津浓莫雷利亚Neo IV' },
+    desc: { ar: 'جلد الكنغر الطبيعي بخياطة يابانية دقيقة لأقصى درجات الإحساس', fr: 'Cuir de kangourou naturel avec couture japonaise précise', en: 'Natural kangaroo leather with precise Japanese stitching for ultimate touch', es: 'Cuero de canguro natural con costura japonesa precisa', de: 'Natürliches Känguruleder mit präziser japanischer Naht', it: 'Cuoio di canguro naturale con cucitura giapponese precisa', nl: 'Natuurlijk kanguroe-leer met nauwkeurige Japanse stiksel', pt: 'Couro de canguru com costura japonesa precisa', ru: 'Натуральная кожа кенгуру с точной японской строчкой', zh: '天然袋鼠皮，精准日本缝制，极致触感' }
+  },
+  {
+    id: 15, img: '/images/p15.jpg', category: 'retro',
+    brand: 'Diadora', badge: null,
+    name: { ar: 'دياودورا برازيل إيتالي كلاسيك', fr: 'Diadora Brasil Italy Classic', en: 'Diadora Brasil Italy Classic', es: 'Diadora Brasil Italia Clásico', de: 'Diadora Brasil Italien Klassisch', it: 'Diadora Brasil Italia Classico', nl: 'Diadora Brasil Italië Klassiek', pt: 'Diadora Brasil Itália Clássico', ru: 'Diadora Brasil Италия Классик', zh: '迪亚多拉巴西意大利经典版' },
+    desc: { ar: 'التصميم الإيطالي الأنيق مع جلد عجل فاخر وتراث كرة قدم عريق', fr: 'Design italien élégant avec cuir veau luxueux et riche héritage footballistique', en: 'Elegant Italian design with luxury calfskin and rich football heritage', es: 'Diseño italiano elegante con lujoso cuero de ternera', de: 'Elegantes italienisches Design mit Luxus-Kalbsleder', it: 'Design italiano elegante con lussuoso cuoio di vitello', nl: 'Elegant Italiaans ontwerp met luxe kalfsleer', pt: 'Design italiano elegante com luxuoso couro de bezerro', ru: 'Элегантный итальянский дизайн с роскошной телячьей кожей', zh: '优雅意大利设计，奢华小牛皮' }
+  },
+  {
+    id: 16, img: '/images/p16.jpg', category: 'retro',
+    brand: 'Nike', badge: null,
+    name: { ar: 'نايك توتال 90 ليزر IV', fr: 'Nike Total 90 Laser IV', en: 'Nike Total 90 Laser IV', es: 'Nike Total 90 Laser IV', de: 'Nike Total 90 Laser IV', it: 'Nike Total 90 Laser IV', nl: 'Nike Total 90 Laser IV', pt: 'Nike Total 90 Laser IV', ru: 'Nike Total 90 Laser IV', zh: '耐克全场90激光IV' },
+    desc: { ar: 'الحذاء الأيقوني التسعيناتي مع لوحة Power Shot لتسديدات مدمرة', fr: "Chaussure iconique des années 90 avec Power Shot pour des tirs dévastateurs", en: 'Iconic 90s boot with Power Shot plate for devastating strikes', es: 'Bota icónica de los 90s con placa Power Shot para disparos devastadores', de: 'Legendärer 90er-Schuh mit Power Shot Platte für verheerende Schüsse', it: 'Scarpino iconico degli anni 90 con piastra Power Shot', nl: 'Iconische jaren 90 schoen met Power Shot plaat', pt: 'Chuteira icônica dos anos 90 com placa Power Shot', ru: 'Культовый ботинок 90-х с пластиной Power Shot', zh: '90年代标志性球鞋，Power Shot底板，威力无匹' }
+  },
+  {
+    id: 17, img: '/images/p17.jpg', category: 'retro',
+    brand: 'Adidas', badge: null,
+    name: { ar: 'أديداس F50 أديزيرو الكلاسيك', fr: 'Adidas F50 Adizero Classic', en: 'Adidas F50 Adizero Classic', es: 'Adidas F50 Adizero Clásico', de: 'Adidas F50 Adizero Klassisch', it: 'Adidas F50 Adizero Classico', nl: 'Adidas F50 Adizero Klassiek', pt: 'Adidas F50 Adizero Clássico', ru: 'Adidas F50 Adizero Классический', zh: '阿迪达斯F50 Adizero经典版' },
+    desc: { ar: 'الأخف في عالم كرة القدم عام 2010 بـ165 جرام فقط من الخفة', fr: "La plus légère du football en 2010 avec seulement 165g de légèreté", en: "The lightest football boot of 2010 at only 165 grams of pure speed", es: 'La bota de fútbol más ligera de 2010 con solo 165 gramos', de: 'Leichtester Fußballschuh 2010 mit nur 165 Gramm', it: 'La scarpina più leggera del 2010 a soli 165 grammi', nl: 'Lichtste voetbalschoen van 2010 met slechts 165 gram', pt: 'A chuteira mais leve de 2010 com apenas 165 gramas', ru: 'Самый легкий футбольный ботинок 2010 года – всего 165 грамм', zh: '2010年最轻足球鞋，仅165克纯速度' }
+  },
+  {
+    id: 18, img: '/images/p18.jpg', category: 'original',
+    brand: 'Puma', badge: 'NEW',
+    name: { ar: 'بوما أولترا ألتيميت FG', fr: 'Puma Ultra Ultimate FG', en: 'Puma Ultra Ultimate FG', es: 'Puma Ultra Ultimate FG', de: 'Puma Ultra Ultimate FG', it: 'Puma Ultra Ultimate FG', nl: 'Puma Ultra Ultimate FG', pt: 'Puma Ultra Ultimate FG', ru: 'Puma Ultra Ultimate FG', zh: '彪马极速终极FG' },
+    desc: { ar: 'الجيل الجديد من النعال الخارقة مع MATRYXEVO 360 للسرعة المطلقة', fr: 'Nouvelle génération avec MATRYXEVO 360 pour une vitesse absolue', en: 'New generation with MATRYXEVO 360 for absolute speed on firm ground', es: 'Nueva generación con MATRYXEVO 360 para velocidad absoluta', de: 'Neue Generation mit MATRYXEVO 360 für absolute Geschwindigkeit', it: 'Nuova generazione con MATRYXEVO 360 per velocità assoluta', nl: 'Nieuwe generatie met MATRYXEVO 360 voor absolute snelheid', pt: 'Nova geração com MATRYXEVO 360 para velocidade absoluta', ru: 'Новое поколение с MATRYXEVO 360 для абсолютной скорости', zh: '新一代MATRYXEVO 360，绝对速度' }
+  }
+];
+
+/* ═══════════════════════════════════════════════
+   APP STATE
+═══════════════════════════════════════════════ */
+let currentLang = 'ar';
+let currentFilter = 'all';
+let currentOrderProduct = null;
+let lightboxIndex = 0;
+const lightboxImages = PRODUCTS.map(p => ({ src: p.img, name: p.name }));
+
+/* ═══════════════════════════════════════════════
+   LANGUAGE SYSTEM
+═══════════════════════════════════════════════ */
+function applyLanguage(lang) {
+  const t = TRANSLATIONS[lang];
+  if (!t) return;
+
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = t.dir;
+
+  // Update all i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined && typeof t[key] !== 'function') {
+      el.textContent = t[key];
+    }
+  });
+
+  // Update placeholders
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph');
+    if (t[key]) el.placeholder = t[key];
+  });
+
+  // Update lang label
+  document.getElementById('langLabel').textContent = t.label;
+
+  // Update active class
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.classList.toggle('active', opt.getAttribute('data-lang') === lang);
+  });
+
+  // Rebuild product grid with new language
+  renderProducts();
+}
+
+/* ═══════════════════════════════════════════════
+   RENDER PRODUCTS
+═══════════════════════════════════════════════ */
+function renderProducts() {
+  const t = TRANSLATIONS[currentLang];
+  const grid = document.getElementById('productsGrid');
+  const filtered = currentFilter === 'all'
+    ? PRODUCTS
+    : PRODUCTS.filter(p => p.category === currentFilter);
+
+  grid.innerHTML = filtered.map((p, i) => {
+    const name = p.name[currentLang] || p.name['en'];
+    const desc = p.desc[currentLang] || p.desc['en'];
+    const badgeHtml = p.badge
+      ? `<div class="card-badge ${p.badge.toLowerCase()}">${p.badge}</div>`
+      : '';
+
+    return `
+      <article class="product-card" data-id="${p.id}" data-category="${p.category}" style="animation-delay:${(i * 0.05)}s">
+        ${badgeHtml}
+        <div class="card-img-wrap" onclick="openLightbox(${p.id - 1})">
+          <img src="${p.img}" alt="${name}" loading="lazy" />
+          <div class="card-img-overlay">
+            <div class="zoom-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-brand">${p.brand}</div>
+          <h3 class="card-name">${name}</h3>
+          <p class="card-desc">${desc}</p>
+          <div class="card-footer">
+            <button class="btn-order" data-product="${name.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}">
+              <i class="fa-brands fa-whatsapp"></i>
+              ${t.order_now}
+            </button>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join('');
+}
+
+/* ═══════════════════════════════════════════════
+   ORDER BUTTON — event delegation on the grid
+   (covers dynamically re-rendered cards and fixes
+   mobile tap; avoids broken inline onclick + JSON)
+═══════════════════════════════════════════════ */
+document.getElementById('productsGrid').addEventListener('click', function(e) {
+  const btn = e.target.closest('.btn-order');
+  if (!btn) return;
+  e.stopPropagation();
+  const productName = btn.getAttribute('data-product');
+  if (productName) openOrderModal(productName);
+});
+
+/* ═══════════════════════════════════════════════
+   FILTER
+═══════════════════════════════════════════════ */
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    currentFilter = btn.getAttribute('data-filter');
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderProducts();
+  });
+});
+
+/* ═══════════════════════════════════════════════
+   LIGHTBOX
+═══════════════════════════════════════════════ */
+function openLightbox(index) {
+  lightboxIndex = index;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function lightboxNav(dir) {
+  lightboxIndex = (lightboxIndex + dir + lightboxImages.length) % lightboxImages.length;
+  updateLightbox();
+}
+function updateLightbox() {
+  const item = lightboxImages[lightboxIndex];
+  const img = document.getElementById('lightboxImg');
+  img.style.opacity = '0';
+  setTimeout(() => {
+    img.src = item.src;
+    img.alt = item.name[currentLang] || item.name['en'];
+    document.getElementById('lightboxCaption').textContent = item.name[currentLang] || item.name['en'];
+    img.style.opacity = '1';
+    img.style.transition = 'opacity 0.3s ease';
+  }, 150);
+}
+document.getElementById('lightbox').addEventListener('click', e => {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+});
+
+/* ═══════════════════════════════════════════════
+   ORDER MODAL
+═══════════════════════════════════════════════ */
+function openOrderModal(productName) {
+  currentOrderProduct = productName;
+  document.getElementById('modalProductName').textContent = productName;
+  document.getElementById('modalForm').style.display = '';
+  document.getElementById('modalFooter').style.display = '';
+  document.getElementById('modalSuccess').classList.remove('show');
+  document.getElementById('inp-name').value = '';
+  document.getElementById('inp-phone').value = '';
+  document.getElementById('inp-city').value = '';
+  document.getElementById('inp-size').value = '';
+  document.getElementById('orderModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => document.getElementById('inp-name').focus(), 400);
+}
+function closeOrderModal() {
+  document.getElementById('orderModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('orderModal').addEventListener('click', e => {
+  if (e.target === document.getElementById('orderModal')) closeOrderModal();
+});
+
+function submitOrder() {
+  const name  = document.getElementById('inp-name').value.trim();
+  const phone = document.getElementById('inp-phone').value.trim();
+  const city  = document.getElementById('inp-city').value.trim();
+  const size  = document.getElementById('inp-size').value;
+
+  if (!name)  { shakeInput('inp-name');  return; }
+  if (!phone) { shakeInput('inp-phone'); return; }
+  if (!city)  { shakeInput('inp-city');  return; }
+  if (!size)  { shakeInput('inp-size');  return; }
+
+  const t = TRANSLATIONS[currentLang];
+  const msg = t.wa_msg(name, currentOrderProduct, city, size, phone);
+  const encoded = encodeURIComponent(msg);
+  const waUrl   = `https://wa.me/212691812670?text=${encoded}`;
+
+  // Show success state
+  document.getElementById('modalForm').style.display = 'none';
+  document.getElementById('modalFooter').style.display = 'none';
+  document.getElementById('modalSuccess').classList.add('show');
+
+  setTimeout(() => {
+    window.open(waUrl, '_blank');
+    setTimeout(closeOrderModal, 1500);
+  }, 800);
+}
+
+function shakeInput(id) {
+  const el = document.getElementById(id);
+  el.style.borderColor = '#e74c3c';
+  el.style.animation = 'shake 0.4s ease';
+  el.focus();
+  setTimeout(() => {
+    el.style.borderColor = '';
+    el.style.animation = '';
+  }, 700);
+}
+
+/* Shake keyframe */
+const shakeStyle = document.createElement('style');
+shakeStyle.textContent = `@keyframes shake {
+  0%,100%{transform:translateX(0)}
+  20%{transform:translateX(-8px)}
+  40%{transform:translateX(8px)}
+  60%{transform:translateX(-5px)}
+  80%{transform:translateX(5px)}
+}`;
+document.head.appendChild(shakeStyle);
+
+/* ═══════════════════════════════════════════════
+   LANGUAGE DROPDOWN
+═══════════════════════════════════════════════ */
+const langBtn = document.getElementById('langBtn');
+const langDropdown = document.getElementById('langDropdown');
+
+langBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  langDropdown.classList.toggle('open');
+});
+
+document.querySelectorAll('.lang-option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    const lang = opt.getAttribute('data-lang');
+    applyLanguage(lang);
+    langDropdown.classList.remove('open');
+  });
+});
+
+document.addEventListener('click', () => langDropdown.classList.remove('open'));
+langDropdown.addEventListener('click', e => e.stopPropagation());
+
+/* ═══════════════════════════════════════════════
+   HAMBURGER
+═══════════════════════════════════════════════ */
+const hamburger = document.getElementById('hamburger');
+const mobileDrawer = document.getElementById('mobileDrawer');
+
+hamburger.addEventListener('click', () => {
+  const open = mobileDrawer.classList.toggle('open');
+  hamburger.classList.toggle('active', open);
+});
+
+function closeMobile() {
+  mobileDrawer.classList.remove('open');
+  hamburger.classList.remove('active');
+}
+
+/* Close drawer on outside click */
+document.addEventListener('click', e => {
+  if (!hamburger.contains(e.target) && !mobileDrawer.contains(e.target)) {
+    closeMobile();
+  }
+});
+
+/* ═══════════════════════════════════════════════
+   KEYBOARD SHORTCUTS
+═══════════════════════════════════════════════ */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeLightbox();
+    closeOrderModal();
+    closeMobile();
+  }
+  if (document.getElementById('lightbox').classList.contains('open')) {
+    if (e.key === 'ArrowLeft')  lightboxNav(1);
+    if (e.key === 'ArrowRight') lightboxNav(-1);
+  }
+});
+
+/* ═══════════════════════════════════════════════
+   HEADER SCROLL
+═══════════════════════════════════════════════ */
+window.addEventListener('scroll', () => {
+  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
+  document.getElementById('back-top').classList.toggle('visible', window.scrollY > 400);
+}, { passive: true });
+
+/* ═══════════════════════════════════════════════
+   TOAST
+═══════════════════════════════════════════════ */
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3200);
+}
+
+/* ═══════════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════════ */
+applyLanguage('ar');
+</script>
+
+</body>
+</html>
